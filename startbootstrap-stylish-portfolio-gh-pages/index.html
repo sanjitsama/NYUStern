@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Stylish Portfolio - Start Bootstrap Template</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- Custom CSS -->
+    <link href="css/stylish-portfolio.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/myMap.css" type="text/css"/>
+
+
+    <!-- Google fonts (RadarChart) -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+
+
+    <!-- D3.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+    <!-- <script src="js/myMap.js" charset="utf-8"></script> -->
+    <script src="js/myMap.js" type="text/javascript"></script>
+
+    
+
+
+  </head>
+
+  <body>
+
+    
+    <!-- Navigation -->
+    <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav id="sidebar-wrapper">
+      <ul class="sidebar-nav">
+        <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle">
+          <i class="fa fa-times"></i>
+        </a>
+        <li class="sidebar-brand">
+          <a class="js-scroll-trigger" href="#top">Start Bootstrap</a>
+        </li>
+        <li>
+          <a class="js-scroll-trigger" href="#top">Home</a>
+        </li>
+        <li>
+          <a class="js-scroll-trigger" href="#about">About</a>
+        </li>
+        <li>
+          <a class="js-scroll-trigger" href="#services">Services</a>
+        </li>
+        <li>
+          <a class="js-scroll-trigger" href="#portfolio">Portfolio</a>
+        </li>
+        <li>
+          <a class="js-scroll-trigger" href="#contact" onclick=$( "#menu-close").click();>Contact</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Header -->
+    <header class="header" id="top">
+      <div class="text-vertical-center">
+        <h1>NYU Stern Housing</h1>
+        <h3>Safe And Affordable Housing &amp; Housing</h3>
+        <br>
+        <a href="#contact" class="btn btn-dark btn-lg js-scroll-trigger">Find Out More</a>
+      </div>
+    </header>
+
+    <!-- About -->
+    <section id="about" class="about">
+      <div class="container text-center">
+        <h2>Use public open data sets to find information about your next place to live!</h2>
+        <p class="lead">Data sets are courtesy of 
+          <a target="_blank" href="data.gov">data.gov</a>.</p>
+      </div>
+      <!-- /.container -->
+    </section>
+
+    <!-- Map -->
+<!--     <section id="contact" class="map">
+      <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A&amp;output=embed"></iframe>
+      <br/>
+      <small>
+        <a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A"></a>
+      </small>
+    </section> -->
+    <!-- <div class="container">
+      <div class="row">
+        <div id="col-md-12">
+          <h3>Stern Student Housing</h3>
+        </div>
+      </div>
+      <div class="row">     
+      <div id="side-menu" class="col-sm-5 col-md-5" >
+        <div class="jumbotron">
+          <div id="menu-cover">
+            <div id="basic-info">
+              <div id="weather"></div>
+            </div>
+            <div id="position-info">
+              <div id="market-name"></div>
+              <div id="website"></div>
+              <div id="street-name"></div>
+              <div id="open-status"></div>
+            </div>
+            <div id="chart">
+            </div>
+            <div id="scores"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-7 col-md-7" id="map_container">
+        <div id="map"></div>
+      </div>
+      
+      
+    </div>
+  </div> -->
+
+
+  <div class="map" id="map_container">
+    <div id="map">
+    </div>
+  </div>
+
+  <div class="radarChart">
+    <div id="chart">
+    </div>
+  </div>
+
+  <div class="radarChart">
+  </div>
+
+<!-- HERE -->
+    <script src="radarChart.js"></script> 
+    <script>
+      
+      /* Radar chart design created by Nadieh Bremer - VisualCinnamon.com */
+      
+      ////////////////////////////////////////////////////////////// 
+      //////////////////////// Set-Up ////////////////////////////// 
+      ////////////////////////////////////////////////////////////// 
+      var margin = {top: 100, right: 100, bottom: 100, left: 100},
+        width = Math.min(700, window.innerWidth - 10) - margin.left - margin.right,
+        height = Math.min(width, window.innerHeight - margin.top - margin.bottom - 20);
+          
+      ////////////////////////////////////////////////////////////// 
+      ////////////////////////// Data ////////////////////////////// 
+      ////////////////////////////////////////////////////////////// 
+      var data = [
+            [//iPhone
+            {axis:"Cost Of Housing",value:0.22},
+            {axis:"Brand",value:0.28},
+            {axis:"Contract Cost",value:0.29},
+            {axis:"Design And Quality",value:0.17},
+            {axis:"Have Internet Connectivity",value:0.22},
+            {axis:"Large Screen",value:0.02},
+            {axis:"Price Of Device",value:0.21},
+            {axis:"To Be A Smartphone",value:0.50}      
+            ]
+            // ,[//Samsung
+            // // {axis:"Battery Life",value:0.27},
+            // {axis:"Brand",value:0.16},
+            // {axis:"Contract Cost",value:0.35},
+            // {axis:"Design And Quality",value:0.13},
+            // {axis:"Have Internet Connectivity",value:0.20},
+            // {axis:"Large Screen",value:0.13},
+            // {axis:"Price Of Device",value:0.35},
+            // {axis:"To Be A Smartphone",value:0.38}
+            // ],[//Nokia Smartphone
+            // {axis:"Battery Life",value:0.26},
+            // {axis:"Brand",value:0.10},
+            // {axis:"Contract Cost",value:0.30},
+            // {axis:"Design And Quality",value:0.14},
+            // {axis:"Have Internet Connectivity",value:0.22},
+            // {axis:"Large Screen",value:0.04},
+            // {axis:"Price Of Device",value:0.41},
+            // {axis:"To Be A Smartphone",value:0.30}
+            // ]
+          ];
+      ////////////////////////////////////////////////////////////// 
+      //////////////////// Draw the Chart ////////////////////////// 
+      ////////////////////////////////////////////////////////////// 
+      var color = d3.scale.ordinal()
+        .range(["#EDC951","#CC333F","#00A0B0"]);
+        
+      var radarChartOptions = {
+        w: width,
+        h: height,
+        margin: margin,
+        maxValue: 0.5,
+        levels: 5,
+        roundStrokes: true,
+        color: color
+      };
+      //Call function to draw the Radar chart
+
+      RadarChart(".radarChart", data, radarChartOptions);
+
+    </script>
+
+    <!-- <script src="radarChart.js"></script> 
+    <script>
+      ////////////////////////////////////////////////////////////// 
+      //////////////////////// Set-Up ////////////////////////////// 
+      ////////////////////////////////////////////////////////////// 
+      var margin = {top: 100, right: 100, bottom: 100, left: 100},
+        width = Math.min(700, window.innerWidth - 10) - margin.left - margin.right,
+        height = Math.min(width, window.innerHeight - margin.top - margin.bottom - 20);
+          
+      ////////////////////////////////////////////////////////////// 
+      ////////////////////////// Data ////////////////////////////// 
+      ////////////////////////////////////////////////////////////// 
+      var data = [
+            [//iPhone
+            {axis:"Battery Life",value:0.22},
+            {axis:"Brand",value:0.28},
+            {axis:"Contract Cost",value:0.29},
+            {axis:"Design And Quality",value:0.17},
+            {axis:"Have Internet Connectivity",value:0.22},
+            {axis:"Large Screen",value:0.02},
+            {axis:"Price Of Device",value:0.21},
+            {axis:"To Be A Smartphone",value:0.50}      
+            ],[//Samsung
+            {axis:"Battery Life",value:0.27},
+            {axis:"Brand",value:0.16},
+            {axis:"Contract Cost",value:0.35},
+            {axis:"Design And Quality",value:0.13},
+            {axis:"Have Internet Connectivity",value:0.20},
+            {axis:"Large Screen",value:0.13},
+            {axis:"Price Of Device",value:0.35},
+            {axis:"To Be A Smartphone",value:0.38}
+            ],[//Nokia Smartphone
+            {axis:"Battery Life",value:0.26},
+            {axis:"Brand",value:0.10},
+            {axis:"Contract Cost",value:0.30},
+            {axis:"Design And Quality",value:0.14},
+            {axis:"Have Internet Connectivity",value:0.22},
+            {axis:"Large Screen",value:0.04},
+            {axis:"Price Of Device",value:0.41},
+            {axis:"To Be A Smartphone",value:0.30}
+            ]
+          ];
+      ////////////////////////////////////////////////////////////// 
+      //////////////////// Draw the Chart ////////////////////////// 
+      ////////////////////////////////////////////////////////////// 
+      var color = d3.scale.ordinal()
+        .range(["#EDC951","#CC333F","#00A0B0"]);
+        
+      var radarChartOptions = {
+        w: width,
+        h: height,
+        margin: margin,
+        maxValue: 0.5,
+        levels: 5,
+        roundStrokes: true,
+        color: color
+      };
+      //Call function to draw the Radar chart
+      //RadarChart(".radarChart", data, radarChartOptions);
+    </script> -->
+
+
+
+
+        <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-10 mx-auto text-center">
+            <h4>
+              <strong>Start Bootstrap</strong>
+            </h4>
+            <p>3481 Melrose Place
+              <br>Beverly Hills, CA 90210</p>
+            <ul class="list-unstyled">
+              <li>
+                <i class="fa fa-phone fa-fw"></i>
+                (123) 456-7890</li>
+              <li>
+                <i class="fa fa-envelope-o fa-fw"></i>
+                <a href="mailto:name@example.com">name@example.com</a>
+              </li>
+            </ul>
+            <br>
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fa fa-facebook fa-fw fa-3x"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fa fa-twitter fa-fw fa-3x"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fa fa-dribbble fa-fw fa-3x"></i>
+                </a>
+              </li>
+            </ul>
+            <hr class="small">
+            <p class="text-muted">Copyright &copy; Your Website 2017</p>
+          </div>
+        </div>
+      </div>
+      <a id="to-top" href="#top" class="btn btn-dark btn-lg js-scroll-trigger">
+        <i class="fa fa-chevron-up fa-fw fa-1x"></i>
+      </a>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/stylish-portfolio.js"></script>
+
+     <!-- <script src="js/myMap.js" type="text/javascript"></script> -->
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC4lO1PjOC9xzRaOK86FJoht6VBFYcsB8&callback=initMap"></script>
+
+
+  </body>
+
+</html>
